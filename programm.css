@@ -57,9 +57,21 @@
     color: var(--text-secondary);
     line-height: 1.5;
 }
+.programm-venue-box .venue-address a.venue-link,
+.reg-info-col .venue-address a.venue-link {
+    color: inherit;
+    text-decoration: none;
+}
+.programm-venue-box .venue-address a.venue-link:hover,
+.reg-info-col .venue-address a.venue-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
 
 /* Registrierung: eine Gesamtbox, links Ort, Mitte Text, rechts Datum & Uhrzeit */
 .reg-info-box {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     align-items: stretch;
     gap: 0;
@@ -72,31 +84,43 @@
 }
 .reg-info-col {
     padding: 20px 24px;
+    -webkit-box-flex: 1;
     flex: 1;
     min-width: 0;
+    text-align: left;
 }
 .reg-info-col.reg-info-ort {
+    -webkit-flex: 0 0 26%;
     flex: 0 0 26%;
     border-right: 1px solid rgba(0, 102, 204, 0.2);
 }
 .reg-info-col.reg-info-text {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
     flex: 1;
     border-right: 1px solid rgba(0, 102, 204, 0.2);
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     background: #ffffff;
+    text-align: left;
 }
 .reg-info-col.reg-info-text .reg-text {
     font-size: 16.5px;
     line-height: 1.7;
-    color: var(--text-primary);
+    color: #1d1d1f;
     text-align: justify;
 }
 .reg-info-col.reg-info-datum {
+    -webkit-flex: 0 0 22%;
     flex: 0 0 22%;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: left;
 }
 .reg-info-col .venue-label {
     font-size: 11px;
@@ -130,14 +154,17 @@
 
 @media (max-width: 768px) {
     .reg-info-box {
+        -webkit-flex-direction: column;
         flex-direction: column;
     }
     .reg-info-col.reg-info-ort,
     .reg-info-col.reg-info-text,
     .reg-info-col.reg-info-datum {
         flex: none;
+        -webkit-flex: none;
         border-right: none;
         border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+        text-align: left;
     }
     .reg-info-col:last-child {
         border-bottom: none;

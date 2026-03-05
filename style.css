@@ -605,6 +605,12 @@ img {
     text-align: center;
 }
 
+/* Gesamtbox Ort/Text/Datum: immer linksbündig, auch wenn programm.css spät lädt oder in Safari */
+.registration-intro .reg-info-box,
+.registration-intro .reg-info-box .reg-info-col {
+    text-align: left;
+}
+
 /* Große Überschrift */
 .reg-title {
     font-size: 40px; /* Groß und dominant */
