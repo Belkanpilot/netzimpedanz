@@ -14,6 +14,7 @@ if (empty($_SESSION['csrf_token'])) {
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="programm.css">
 </head>
 <body>
 
@@ -25,9 +26,23 @@ if (empty($_SESSION['csrf_token'])) {
         <div class="registration-intro" style="margin-bottom: 20px;">
             <h1 style="color: var(--accent-color)"><strong>Registration April 23, 2026 - 8th Conference</strong></h1>
             <h2 class="reg-title">Rethinking Grid Utilization:<br>Storage & Overbuilding.</h2>
-            <p class="reg-text" style="margin-bottom: 0;">
-                The energy transition poses new challenges. How do we stably integrate volatile generators into our grids? How do we maximize the use of existing infrastructure? On <strong>April 23, 2026</strong>, in Hamburg, we will dedicate ourselves to the key technologies of the coming decade.
-            </p>
+            <div class="reg-info-box">
+                <div class="reg-info-col reg-info-ort">
+                    <div class="venue-label">Venue</div>
+                    <div class="venue-name">Ingenieurwerk Hamburg</div>
+                    <div class="venue-address">Georg-Wilhelm-Straße 187<br>21107 Hamburg<br>Germany</div>
+                </div>
+                <div class="reg-info-col reg-info-text">
+                    <p class="reg-text" style="margin: 0;">
+                        The energy transition poses new challenges. How do we stably integrate volatile generators into our grids? How do we maximize the use of existing infrastructure? On April 23, 2026, in Hamburg, we will dedicate ourselves to the key technologies of the coming decade.
+                    </p>
+                </div>
+                <div class="reg-info-col reg-info-datum">
+                    <div class="venue-label">Date & Time</div>
+                    <div class="reg-datum">April 23, 2026</div>
+                    <div class="reg-uhrzeit">09:00 – 17:00</div>
+                </div>
+            </div>
         </div>
 
         <div class="form-container" style="margin-bottom: 60px; border: 1px solid #e5e5e5;">

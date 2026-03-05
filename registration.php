@@ -14,6 +14,7 @@ if (empty($_SESSION['csrf_token'])) {
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="programm.css">
 </head>
 <body>
 
@@ -24,9 +25,23 @@ if (empty($_SESSION['csrf_token'])) {
         <div class="registration-intro" style="margin-bottom: 20px;">
             <h1 style="color: var(--accent-color)"><strong>Registrierung 23. April 2026 - 8. Konferenz</strong></h1>
             <h2 class="reg-title">Netzausnutzung neu denken:<br>Speicher & Überbauung.</h2>
-            <p class="reg-text" style="margin-bottom: 0;">
-                Die Energiewende stellt uns vor neue Herausforderungen. Wie integrieren wir volatile Erzeuger stabil in unsere Netze? Wie nutzen wir bestehende Infrastrukturen maximal aus? Am <strong>23. April 2026</strong> widmen wir uns in Hamburg den Schlüsseltechnologien des kommenden Jahrzehnts.
-            </p>
+            <div class="reg-info-box">
+                <div class="reg-info-col reg-info-ort">
+                    <div class="venue-label">Veranstaltungsort</div>
+                    <div class="venue-name">Ingenieurwerk Hamburg</div>
+                    <div class="venue-address">Georg-Wilhelm-Straße 187<br>21107 Hamburg<br>Deutschland</div>
+                </div>
+                <div class="reg-info-col reg-info-text">
+                    <p class="reg-text" style="margin: 0;">
+                        Die Energiewende stellt uns vor neue Herausforderungen. Wie integrieren wir volatile Erzeuger stabil in unsere Netze? Wie nutzen wir bestehende Infrastrukturen maximal aus? Am 23. April 2026 widmen wir uns in Hamburg den Schlüsseltechnologien des kommenden Jahrzehnts.
+                    </p>
+                </div>
+                <div class="reg-info-col reg-info-datum">
+                    <div class="venue-label">Datum & Uhrzeit</div>
+                    <div class="reg-datum">23. April 2026</div>
+                    <div class="reg-uhrzeit">09:00 – 17:00 Uhr</div>
+                </div>
+            </div>
         </div>
 
         <div class="form-container" style="margin-bottom: 60px; border: 1px solid #e5e5e5;">
