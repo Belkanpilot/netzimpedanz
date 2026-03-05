@@ -1,0 +1,116 @@
+/* =========================================
+   AGENDA / PROGRAMM STYLING
+   ========================================= */
+
+.agenda-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Ein einzelner Programmpunkt */
+.agenda-item {
+    display: flex;
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e5e5;
+    transition: background-color 0.2s ease;
+}
+
+.agenda-item:last-child {
+    border-bottom: none;
+}
+
+/* Block-Überschrift (Block I/II/III) */
+.agenda-block-header {
+    padding-top: 25px;
+    border-top: 1px solid #e5e5e5;
+}
+.agenda-block-header:first-of-type {
+    border-top: none;
+}
+
+/* Einzelvortrag innerhalb eines Blocks */
+.agenda-talk {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-left: 140px; /* Einrückung entsprechend der Zeit-Spaltenbreite */
+    border-left: 3px solid var(--accent-color);
+    background-color: rgba(0, 0, 0, 0.01); /* Sehr subtiler Hintergrund */
+}
+.agenda-talk .agenda-content {
+    padding-left: 10px; /* Nur 10px Abstand zwischen blauer Linie und Text */
+}
+.agenda-talk .agenda-title {
+    font-size: 17px;
+}
+
+.agenda-item:hover {
+    background-color: rgba(0,0,0,0.01); /* Ganz subtiler Hover-Effekt */
+}
+
+/* Die linke Spalte (Uhrzeit) */
+.agenda-time {
+    width: 140px;
+    flex-shrink: 0;
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 16px;
+    padding-right: 20px;
+    text-align: right; /* Rechtsbündig zur Trennlinie hin */
+}
+
+/* Die rechte Spalte (Inhalt) */
+.agenda-content {
+    flex: 1;
+}
+
+.agenda-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.agenda-speaker {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.agenda-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Status-Label (z.B. "Pause", "Keynote") */
+.agenda-tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background-color: var(--bg-light);
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+/* Mobile Anpassung */
+@media (max-width: 600px) {
+    .agenda-item {
+        flex-direction: column;
+    }
+    .agenda-time {
+        text-align: left;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    .agenda-talk {
+        margin-left: 0; /* Keine Einrückung auf mobilen Geräten */
+    }
+    .agenda-talk .agenda-content {
+        padding-left: 10px;
+    }
+}

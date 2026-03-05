@@ -1,0 +1,788 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --bg-color: #ffffff;
+    --bg-light: #f5f5f7; /* Apple Hellgrau */
+    --text-primary: #1d1d1f; /* Fast Schwarz */
+    --text-secondary: #86868b; /* Apple Grau */
+    --accent-color: #0066cc; /* Apple Blau */
+    --accent-hover: #004499;
+    --nav-height: 80px; /* Synchron mit header.css */
+    --container-width: 980px;
+    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.47059;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    font-size: 17px;
+    padding-top: var(--nav-height); /* Verhindert, dass Inhalt hinter Header rutscht */
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5em;
+    letter-spacing: -0.015em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* =========================================
+   2. LAYOUT UTILITIES & TYPOGRAPHY
+   ========================================= */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.section-title {
+    font-size: 48px;
+    line-height: 1.08;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-subtitle {
+    font-size: 24px;
+    line-height: 1.16;
+    font-weight: 400;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: -40px;
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons (Pillen-Design) */
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 980px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.02);
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+.hero {
+    height: 90vh;
+    background: url('bilder/windenergie-netzinfrastruktur.webp') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: -80px; /* Ausgleich für Body Padding, damit Hero ganz oben ist */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    color: #fff !important;
+}
+
+.hero-content p {
+    font-size: 21px;
+    font-weight: 400;
+    margin-bottom: 35px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+/* =========================================
+   4. GOALS (CARDS)
+   ========================================= */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background: var(--bg-color);
+    padding: 40px 30px;
+    border-radius: 18px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.icon-box {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.highlight-text {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--text-primary);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   5. TEAM & BOARD
+   ========================================= */
+.team-grid {
+    gap: 50px;
+}
+
+.team-card {
+    background: transparent;
+    text-align: center;
+}
+
+.team-img img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: contain; /* Verhindert Abschneiden von Gesichtern */
+    margin: 0 auto 25px;
+}
+
+.team-card h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.role {
+    color: var(--accent-color);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Erweiterter Vorstand (Visitenkarten) */
+.other-members {
+    margin-top: 80px;
+}
+
+.other-members h3 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 24px;
+}
+
+.erweiterter-vorstand-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.mitglied-karte {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mitglied-karte:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.mitglied-karte .name {
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.mitglied-karte .institution {
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   6. GALLERY / EVENTS (HOME & HISTORY)
+   ========================================= */
+
+/* A. STARTSEITE (Preview) - Fixierte 3 Spalten */
+.gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Zwingend 3 Spalten */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: visible;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Einheitliche Höhe */
+    object-fit: cover; /* Sauberes Zuschneiden */
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: translateY(-5px);
+}
+
+.gallery-item .overlay {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+/* B. HISTORIE SEITE (Full Grid) - Flexibel */
+.full-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.full-gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.full-gallery-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+/* =========================================
+   7. NETWORK (PARTNER LOGOS)
+   ========================================= */
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 25px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.partner-logo {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.partner-logo:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.partner-logo img {
+    filter: none; /* Farbe! */
+    opacity: 1;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.partner-logo:hover img {
+    transform: scale(1.1);
+}
+
+/* =========================================
+   8. CONTACT
+   ========================================= */
+.contact-section {
+    background: var(--bg-color);
+}
+
+.contact-wrapper {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.contact-info p {
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+}
+
+.contact-info strong {
+    color: var(--text-primary);
+}
+
+.contact-info a {
+    color: var(--accent-color);
+}
+
+.map-frame img {
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.social-icon {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background: #e0e0e0;
+    color: #333;
+    font-size: 12px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.social-icon:hover {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* =========================================
+   9. FOOTER
+   ========================================= */
+.main-footer {
+    background-color: #f5f5f7;
+    color: #86868b;
+    padding-top: 50px;
+    font-size: 12px;
+    border-top: 1px solid #d2d2d7;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    padding-bottom: 30px;
+}
+
+.footer-col h3 {
+    color: #1d1d1f;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: none;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a, .footer-contact a {
+    color: #424245;
+}
+
+.footer-links a:hover, .footer-contact a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background-color: #f5f5f7;
+    border-top: 1px solid #d2d2d7;
+    padding: 20px 0;
+    color: #86868b;
+    text-align: left;
+}
+
+/* =========================================
+   10. MOBILE / RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+    .gallery-preview {
+        grid-template-columns: 1fr; /* Galerie Startseite untereinander */
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 36px;
+    }
+    .hero-content h1 {
+        font-size: 40px;
+    }
+    .erweiterter-vorstand-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+}
+
+/* =========================================
+   FORMULAR STYLING (Apple Style)
+   ========================================= */
+
+.form-container {
+    max-width: 600px; /* Schmaler, damit es edel wirkt */
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: inherit;
+    color: var(--text-primary);
+    background-color: #f5f5f7; /* Apple Input Grau */
+    border: 1px solid transparent;
+    border-radius: 12px; /* Apple Input Radius */
+    transition: all 0.3s ease;
+    -webkit-appearance: none; /* Entfernt Standard-Browser-Styles */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background-color: #fff;
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical; /* Nur vertikal verstellbar */
+    min-height: 120px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.checkbox-group input {
+    width: auto;
+    margin-top: 3px;
+}
+/* =========================================
+   REGISTRIERUNGSEITE CONTENT STYLING
+   ========================================= */
+
+.registration-intro {
+    max-width: 800px;
+    margin: 0 auto 60px auto; /* Zentriert, Abstand nach unten zum Formular */
+    text-align: center;
+}
+
+/* Große Überschrift */
+.reg-title {
+    font-size: 40px; /* Groß und dominant */
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+/* Untertitel in Grau */
+.reg-subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+/* Fließtext */
+.reg-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+}
+
+/* Die graue Box mit den Highlights */
+.reg-highlights {
+    background-color: var(--bg-light); /* Apple Hellgrau */
+    padding: 30px;
+    border-radius: 20px; /* Weiche Ecken */
+    text-align: left; /* Text darin linksbündig */
+    margin-bottom: 30px;
+}
+
+.highlight-intro {
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.reg-highlights ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reg-highlights li {
+    display: flex; /* Damit Icon und Text sauber nebeneinander stehen */
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.reg-highlights li:last-child {
+    margin-bottom: 0;
+}
+
+/* Das Häkchen Icon */
+.check-icon {
+    color: var(--accent-color); /* Apple Blau */
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 12px;
+    margin-top: -2px; /* Feinjustierung der Höhe */
+    flex-shrink: 0; /* Verhindert, dass das Icon gequetscht wird */
+}
+
+/* Call for Participation Text */
+.reg-cfp {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto; /* Zentriert diesen Block */
+}
+
+.reg-cfp strong {
+    color: var(--accent-color); /* Hervorhebung in Blau */
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+    .reg-title {
+        font-size: 32px;
+    }
+    .reg-subtitle {
+        font-size: 20px;
+    }
+    .reg-highlights {
+        padding: 20px;
+    }
+}
+
+/* =========================================
+   FIX FÜR CHECKBOX (UI/UX) - FINAL
+   ========================================= */
+
+/* Der Container: Flexbox sorgt dafür, dass Box und Text nebeneinander stehen */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Die Checkbox selbst stylen */
+.checkbox-group input[type="checkbox"] {
+    /* 1. GRÖSSE: Zwingt die Box klein zu bleiben (überschreibt width: 100%) */
+    width: 20px !important;
+    height: 20px !important;
+
+    /* 2. OPTIK: Zwingt den Browser, es wieder als Checkbox zu rendern */
+    -webkit-appearance: checkbox !important;
+    appearance: auto !important;
+
+    /* 3. LAYOUT: Verhindert Verzerren */
+    flex-shrink: 0;
+    margin-top: 2px;
+    padding: 0 !important; /* Innenabstand entfernen */
+    border: none !important; /* Rahmen vom Textfeld-Style entfernen */
+    background: transparent !important; /* Hintergrund entfernen */
+
+    /* 4. FARBE: Apple-Blau für den Haken/Hintergrund wenn aktiv */
+    accent-color: #0071e3;
+    cursor: pointer;
+}
+
+/* Das Label daneben klickbar machen */
+.checkbox-group label {
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0;
+    width: auto; /* Label darf nicht 100% breit sein */
+    user-select: none;
+}
+/* Macht Telefon- und Mail-Links fingerfreundlich */
+a[href^="mailto:"],
+a[href^="tel:"] {
+    display: inline-block; /* Wichtig, damit Padding wirkt */
+    padding: 12px 0;       /* 12 Pixel Platz oben und unten */
+    min-height: 48px;      /* Mindesthöhe für Touch-Targets */
+    line-height: 24px;     /* Vertikale Ausrichtung */
+    color: #0056b3;        /* Ein dunkleres Blau für besseren Kontrast */
+    text-decoration: underline; /* Unterstreichung hilft beim Erkennen */
+}
+/* =========================================
+   11. ACCESSIBILITY / KONTRAST FIXES
+   (Google PageSpeed Optimierung)
+   ========================================= */
+
+/* 1. Texte dunkler machen (löst "Insufficient Contrast") */
+/* Wir ändern das helle #86868b zu einem dunklen #333333 */
+p,
+.card p,
+.mitglied-karte .institution,
+.contact-info p,
+.section-subtitle,
+.reg-subtitle,
+li {
+    color: #333333 !important;
+}
+
+/* 2. Links kontrastreicher machen */
+a {
+    color: #0056b3; /* Etwas dunkleres Blau als das Standard-Apple-Blau */
+}
+
+/* 3. Footer Links lesbar halten */
+.footer-links a,
+.footer-contact a {
+    color: #444444 !important;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #000000 !important;
+}

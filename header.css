@@ -1,0 +1,142 @@
+/* header.css */
+
+/* Der Header Container */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* Greift auf die Variable aus style.css zu - wird unten definiert */
+    height: var(--nav-height);
+    z-index: 9999;
+    background-color: #FEFEFE; /* weiß, passend zum Logo */
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Sehr dezente Linie */
+}
+
+/* Flexbox Layout für den Inhalt */
+.header-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Logo Anpassung */
+.logo a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    /* Logo Größe anpassen an den höheren Header */
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Navigation Liste */
+.nav-list {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-list li a {
+    font-size: 14px; /* Apple nutzt eher kleine, feine Schriften */
+    color: #333;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s, color 0.2s;
+    font-weight: 400;
+}
+
+.nav-list li a:hover, .nav-list li a.active {
+    opacity: 1;
+    color: var(--accent-color); /* Nutzt das Blau aus style.css */
+}
+
+/* Sprachumschalter */
+.lang-switch {
+    font-size: 14px;
+    margin-left: 10px;
+    color: #333;
+}
+
+.lang-switch a {
+    opacity: 0.5;
+}
+
+.lang-switch .active {
+    font-weight: 600;
+    opacity: 1;
+    cursor: default;
+}
+
+/* --- Burger Menu (Mobile) --- */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 22px;
+    height: 2px;
+    background-color: #333;
+    margin: 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Anpassungen */
+@media (max-width: 768px) {
+    .nav-list {
+        position: absolute;
+        right: 0;
+        top: var(--nav-height);
+        height: calc(100vh - var(--nav-height));
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        padding-top: 50px;
+        box-shadow: -2px 5px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-list li {
+        margin: 20px 0;
+        opacity: 0;
+    }
+
+    .nav-list li a {
+        font-size: 20px;
+    }
+
+    .burger {
+        display: block;
+    }
+}
+
+/* Animation Klassen für Mobile Menu */
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.nav-active li {
+    animation: navLinkFade 0.5s ease forwards 0.3s;
+}
+
+/* Burger Animation zu X */
+.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+.toggle .line2 { opacity: 0; }
+.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }

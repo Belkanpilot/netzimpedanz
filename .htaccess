@@ -1,0 +1,5 @@
+# Verhindert den Zugriff auf die CSV-Datei von außen
+<Files "teilnehmer_liste_intern_2026.csv">
+    Order Allow,Deny
+    Deny from all
+</Files>

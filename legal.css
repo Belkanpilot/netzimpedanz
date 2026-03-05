@@ -1,0 +1,51 @@
+/* legal.css - Speziell für Rechtstexte */
+
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.legal-content h1 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-align: center;
+    /* Nutzt automatisch die System-Schrift aus style.css :root */
+}
+
+.legal-content h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    color: var(--text-primary);
+}
+
+.legal-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.legal-content p {
+    margin-bottom: 15px;
+}
+
+.legal-content ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.legal-content a {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.legal-content a:hover {
+    text-decoration: none;
+}

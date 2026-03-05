@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+
+# IDE / Editor
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# PHP / Composer
+vendor/
+composer.lock
+
+# Node (falls genutzt)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Umgebungsvariablen (falls später genutzt)
+.env
+.env.local
+.env.*.local
+
+# Logs & temporäre Dateien
+*.log
+tmp/
+temp/
+cache/
+
+# Sensible Projektdateien (Teilnehmerdaten)
+teilnehmer_liste_intern_*.csv
+
+# Optional: Uploads (falls Upload-Ordner genutzt wird)
+# uploads/
