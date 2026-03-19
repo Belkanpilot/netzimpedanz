@@ -6,10 +6,8 @@ session_start();
 $csvFile = 'teilnehmer_liste_intern_2026.csv';
 
 // 1. Sicherheit: Passwort-Hash
-// Das ist der Hash für das Passwort: "Netz2026!"
-// Wenn du das Passwort ändern willst, erstelle hier einen neuen Hash: https://bcrypt-generator.com/
-$passwordHash = '$2y$10$wW55x/u5.Kk1/tKq.o.xO.C3s.q.H1.l1.k1.j1.h1.g1.f1.d1';
-// (Hinweis: Ich habe hier einen Standard-Hash für "Netz2026!" generiert)
+// Passwort nur als Hash speichern, niemals im Klartext dokumentieren.
+$passwordHash = '$2y$12$Ou8h2/NSdzkVDtv5UbaFN.qeS0pXKMcsrZidGy0Ij2weAbri09vmG';
 
 // 2. Logout Logik (Nur via POST erlaubt)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
