@@ -46,6 +46,18 @@ if (empty($_SESSION['csrf_token'])) {
             </div>
         </div>
 
+        <?php if (isset($_GET['rl'])): ?>
+            <div style="max-width: 800px; margin: 0 auto 16px auto; padding: 12px 14px; border-radius: 10px; border: 1px solid #ffcc80; background: #fff8e1; color: #7a4b00;">
+                Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es in einigen Minuten erneut.
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_GET['csrf'])): ?>
+            <div style="max-width: 800px; margin: 0 auto 16px auto; padding: 12px 14px; border-radius: 10px; border: 1px solid #b3d4ff; background: #eef7ff; color: #004a99;">
+                Ihre Sitzung wurde aus Sicherheitsgründen erneuert. Bitte senden Sie das Formular erneut ab.
+            </div>
+        <?php endif; ?>
+
         <div class="form-container" style="margin-bottom: 60px; border: 1px solid #e5e5e5;">
 
             <form action="register.php" method="POST">

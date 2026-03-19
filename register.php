@@ -8,10 +8,85 @@ $internalNotificationEmail = 'info@netzimpedanz.com';
 $mailFromAddress = 'noreply@netzimpedanz.com';
 $mailReplyTo = 'info@netzimpedanz.com';
 $mailDebugLogFile = 'mail_debug.log';
+$rateLimitFile = 'rate_limit.json';
+$rateLimitWindowSeconds = 600; // 10 Minuten
+$rateLimitMaxRequests = 5;     // max. 5 Versuche pro Fenster/IP
 
 function logMailDebug(string $message, string $mailDebugLogFile): void {
     $line = '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL;
     @file_put_contents($mailDebugLogFile, $line, FILE_APPEND);
+}
+
+/**
+ * Simple IP based rate limiting with file lock.
+ * Returns true if the IP exceeded the limit.
+ */
+function isRateLimited(
+    string $ip,
+    string $rateLimitFile,
+    int $windowSeconds,
+    int $maxRequests
+): bool {
+    if ($ip === '') {
+        return false;
+    }
+
+    $now = time();
+    $fp = fopen($rateLimitFile, 'c+');
+    if ($fp === false) {
+        // Fallback: do not block if file access fails.
+        return false;
+    }
+
+    if (!flock($fp, LOCK_EX)) {
+        fclose($fp);
+        return false;
+    }
+
+    $raw = stream_get_contents($fp);
+    $data = [];
+    if (is_string($raw) && trim($raw) !== '') {
+        $decoded = json_decode($raw, true);
+        if (is_array($decoded)) {
+            $data = $decoded;
+        }
+    }
+
+    // Cleanup old entries for all IPs.
+    foreach ($data as $storedIp => $timestamps) {
+        if (!is_array($timestamps)) {
+            unset($data[$storedIp]);
+            continue;
+        }
+        $filtered = array_values(array_filter($timestamps, static function ($ts) use ($now, $windowSeconds) {
+            return is_int($ts) && $ts >= ($now - $windowSeconds);
+        }));
+        if (empty($filtered)) {
+            unset($data[$storedIp]);
+        } else {
+            $data[$storedIp] = $filtered;
+        }
+    }
+
+    $ipEntries = $data[$ip] ?? [];
+    if (!is_array($ipEntries)) {
+        $ipEntries = [];
+    }
+
+    $isLimited = count($ipEntries) >= $maxRequests;
+    if (!$isLimited) {
+        $ipEntries[] = $now;
+        $data[$ip] = $ipEntries;
+    }
+
+    ftruncate($fp, 0);
+    rewind($fp);
+    fwrite($fp, json_encode($data, JSON_UNESCAPED_SLASHES));
+    fflush($fp);
+    flock($fp, LOCK_UN);
+    fclose($fp);
+
+    return $isLimited;
 }
 
 /**
@@ -103,10 +178,31 @@ if (!empty($_POST['website_hp'])) {
 
 // 2. Nur POST erlauben
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // 2b. Rate-Limit gegen automatisierte Massenanfragen
+    $clientIp = $_SERVER['REMOTE_ADDR'] ?? '';
+    if (isRateLimited($clientIp, $rateLimitFile, $rateLimitWindowSeconds, $rateLimitMaxRequests)) {
+        $requestedLanguage = strtoupper(strip_tags(trim($_POST['_language'] ?? 'DE')));
+        if ($requestedLanguage === 'EN') {
+            header("Location: registration-en.php?rl=1");
+        } else {
+            header("Location: registration.php?rl=1");
+        }
+        exit;
+    }
 
     // 3. CSRF Token prüfen
-    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-        die("Ungültige Sitzung (CSRF Fehler). Bitte laden Sie die Seite neu.");
+    $postedToken = $_POST['csrf_token'] ?? '';
+    $sessionToken = $_SESSION['csrf_token'] ?? '';
+    if ($postedToken === '' || $sessionToken === '' || !hash_equals($sessionToken, $postedToken)) {
+        // Token neu ausstellen und Nutzer sauber aufs Formular zurückleiten
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        $requestedLanguage = strtoupper(strip_tags(trim($_POST['_language'] ?? 'DE')));
+        if ($requestedLanguage === 'EN') {
+            header("Location: registration-en.php?csrf=1");
+        } else {
+            header("Location: registration.php?csrf=1");
+        }
+        exit;
     }
 
     // Daten bereinigen
