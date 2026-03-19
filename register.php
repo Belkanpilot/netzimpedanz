@@ -7,6 +7,12 @@ $csvFile = 'teilnehmer_liste_intern_2026.csv';
 $internalNotificationEmail = 'info@netzimpedanz.com';
 $mailFromAddress = 'noreply@netzimpedanz.com';
 $mailReplyTo = 'info@netzimpedanz.com';
+$mailDebugLogFile = 'mail_debug.log';
+
+function logMailDebug(string $message, string $mailDebugLogFile): void {
+    $line = '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL;
+    @file_put_contents($mailDebugLogFile, $line, FILE_APPEND);
+}
 
 /**
  * Sends internal notification and participant confirmation email.
@@ -21,7 +27,8 @@ function sendRegistrationEmails(
     string $date,
     string $internalNotificationEmail,
     string $mailFromAddress,
-    string $mailReplyTo
+    string $mailReplyTo,
+    string $mailDebugLogFile
 ): void {
     $topicText = $topic !== '' ? $topic : '—';
     $mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Georg-Wilhelm-Stra%C3%9Fe+187,+21107+Hamburg';
@@ -44,7 +51,12 @@ function sendRegistrationEmails(
         . "Content-Type: text/plain; charset=UTF-8\r\n"
         . "From: Netzimpedanz <" . $mailFromAddress . ">\r\n"
         . "Reply-To: " . $email . "\r\n";
-    @mail($internalNotificationEmail, $internalSubject, $internalBody, $internalHeaders);
+    $internalSent = mail($internalNotificationEmail, $internalSubject, $internalBody, $internalHeaders);
+    if (!$internalSent) {
+        logMailDebug('Internal mail failed for ' . $email . ' to ' . $internalNotificationEmail, $mailDebugLogFile);
+    } else {
+        logMailDebug('Internal mail sent for ' . $email . ' to ' . $internalNotificationEmail, $mailDebugLogFile);
+    }
 
     // Participant confirmation
     if ($isEnglish) {
@@ -75,7 +87,12 @@ function sendRegistrationEmails(
         . "Content-Type: text/plain; charset=UTF-8\r\n"
         . "From: Netzimpedanz <" . $mailFromAddress . ">\r\n"
         . "Reply-To: " . $mailReplyTo . "\r\n";
-    @mail($email, $participantSubject, $participantBody, $participantHeaders);
+    $participantSent = mail($email, $participantSubject, $participantBody, $participantHeaders);
+    if (!$participantSent) {
+        logMailDebug('Participant mail failed for ' . $email, $mailDebugLogFile);
+    } else {
+        logMailDebug('Participant mail sent for ' . $email, $mailDebugLogFile);
+    }
 }
 
 // 1. CSRF Schutz & Spam Schutz (Honeypot)
@@ -136,10 +153,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $date,
             $internalNotificationEmail,
             $mailFromAddress,
-            $mailReplyTo
+            $mailReplyTo,
+            $mailDebugLogFile
         );
     } catch (Throwable $e) {
         error_log('Registration mail error: ' . $e->getMessage());
+        logMailDebug('Exception: ' . $e->getMessage(), $mailDebugLogFile);
     }
 
     // Session Token erneuern für nächsten Request
