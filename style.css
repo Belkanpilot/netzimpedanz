@@ -22,6 +22,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 body {
     font-family: var(--font-stack);
     background-color: var(--bg-color);
@@ -30,7 +35,8 @@ body {
     font-weight: 400;
     letter-spacing: -0.022em;
     font-size: 17px;
-    padding-top: var(--nav-height); /* Verhindert, dass Inhalt hinter Header rutscht */
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px)); /* Header inkl. Notch */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 h1, h2, h3 {
@@ -62,7 +68,8 @@ img {
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
 
 .section {
@@ -511,6 +518,9 @@ img {
 }
 
 @media (max-width: 768px) {
+    .section {
+        padding: 72px 0;
+    }
     .section-title {
         font-size: 36px;
     }
@@ -526,6 +536,18 @@ img {
     .footer-grid {
         grid-template-columns: 1fr;
         text-align: left;
+    }
+}
+
+/* Schmale Phones (z. B. iPhone 12–15, 390–430 CSS-Pixel) */
+@media (max-width: 430px) {
+    .section {
+        padding: 48px 0;
+    }
+    .section-title {
+        font-size: 28px;
+        line-height: 1.12;
+        margin-bottom: 36px;
     }
 }
 

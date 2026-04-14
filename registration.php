@@ -9,7 +9,7 @@ if (empty($_SESSION['csrf_token'])) {
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Registrierung | Jahreskonferenz 2026</title>
 
     <link rel="stylesheet" href="style.css">

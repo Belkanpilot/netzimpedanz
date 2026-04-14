@@ -4,9 +4,12 @@
 .header {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    /* Greift auf die Variable aus style.css zu - wird unten definiert */
-    height: var(--nav-height);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    min-height: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
     z-index: 9999;
     background-color: #FEFEFE; /* weiß, passend zum Logo */
     border-bottom: 1px solid rgba(0,0,0,0.05); /* Sehr dezente Linie */
@@ -14,13 +17,14 @@
 
 /* Flexbox Layout für den Inhalt */
 .header-container {
-    height: 100%;
+    height: var(--nav-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
 
 /* Logo Anpassung */
@@ -95,8 +99,9 @@
     .nav-list {
         position: absolute;
         right: 0;
-        top: var(--nav-height);
-        height: calc(100vh - var(--nav-height));
+        top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+        height: calc(100vh - var(--nav-height) - env(safe-area-inset-top, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
         background-color: #ffffff;
         display: flex;
         flex-direction: column;
@@ -118,7 +123,15 @@
     }
 
     .burger {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        margin: -8px -8px -8px 0;
+        padding: 8px;
+        box-sizing: content-box;
     }
 }
 

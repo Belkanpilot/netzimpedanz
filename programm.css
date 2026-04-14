@@ -292,6 +292,9 @@
     border-radius: 14px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
+.programm-intro-wrap {
+    margin-bottom: 60px;
+}
 .programm-sponsors-label {
     text-align: center;
     font-size: 11px;
@@ -394,5 +397,77 @@
     .programm-sponsor-card img {
         max-height: 40px;
         max-width: min(160px, 30vw);
+    }
+}
+
+/* iPhone 12 u. a. (ca. 390–430 CSS-Pixel): Lesbarkeit, Sponsoren, Tap-Ziele */
+@media (max-width: 430px) {
+    .programm-intro-wrap h1 {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+    .programm-intro-wrap {
+        margin-bottom: 36px;
+    }
+    .programm-venue-box {
+        padding: 16px 18px;
+    }
+    .programm-venue-box .venue-name {
+        font-size: 18px;
+    }
+    .programm-intro-row .programm-intro-text {
+        font-size: 16px;
+        line-height: 1.55;
+    }
+    .programm-sponsors {
+        padding: 18px 14px;
+        margin-bottom: 32px;
+    }
+    .programm-sponsors-logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 20px;
+        column-gap: 18px;
+        padding: 0;
+    }
+    .programm-sponsor-card a {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 4px 6px;
+        box-sizing: border-box;
+    }
+    .programm-sponsor-card img {
+        max-height: 44px;
+        max-width: min(210px, 88vw);
+    }
+    .programm-intro-wrap .btn {
+        min-height: 44px;
+        padding: 12px 24px;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        touch-action: manipulation;
+    }
+    .agenda-item {
+        padding: 20px 0;
+    }
+    .agenda-time {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+    .agenda-title {
+        font-size: 17px;
+    }
+    .agenda-speaker {
+        font-size: 14px;
+    }
+    .agenda-desc {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+    .agenda-talk .agenda-title {
+        font-size: 16px;
     }
 }
