@@ -282,6 +282,66 @@
     line-height: 1.5;
 }
 
+/* Sponsoren (Programmseite) */
+.programm-sponsors {
+    max-width: 900px;
+    margin: 0 auto 48px;
+    padding: 28px 32px;
+    background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+    border: 1px solid rgba(0, 102, 204, 0.15);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+.programm-sponsors-label {
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+.programm-sponsors-logos {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    gap: 28px 40px;
+}
+.programm-sponsor-card {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.programm-sponsor-card img {
+    display: block;
+    max-height: 56px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+}
+/* EGSTON: Logo mit dunklem Grund wie im Corporate Design */
+.programm-sponsor-card--dark {
+    background: #141414;
+    border-radius: 10px;
+    padding: 14px 22px;
+}
+.programm-sponsor-card--dark img {
+    max-height: 48px;
+}
+
 /* Status-Label (z.B. "Pause", "Keynote") */
 .agenda-tag {
     display: inline-block;
@@ -322,5 +382,12 @@
     }
     .agenda-talk .agenda-content {
         padding-left: 10px;
+    }
+    .programm-sponsors {
+        padding: 22px 18px;
+        margin-bottom: 36px;
+    }
+    .programm-sponsors-logos {
+        gap: 20px 24px;
     }
 }
