@@ -3,3 +3,14 @@
     Order Allow,Deny
     Deny from all
 </Files>
+
+# Cache: Besucher sehen nach Updates keine veralteten CSS/JS ohne manuelles Leeren
+# (Browser fragt den Server erneut; bei geänderter Datei kommt 200 mit neuem Inhalt)
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>

@@ -4,6 +4,7 @@ session_start();
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
+require_once __DIR__ . '/inc/assets.php';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -12,9 +13,9 @@ if (empty($_SESSION['csrf_token'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Registrierung | Jahreskonferenz 2026</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="programm.css">
+    <link rel="stylesheet" href="<?php echo netz_asset('style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo netz_asset('header.css'); ?>">
+    <link rel="stylesheet" href="<?php echo netz_asset('programm.css'); ?>">
 </head>
 <body>
 
@@ -156,6 +157,6 @@ if (empty($_SESSION['csrf_token'])) {
 
 <div id="footer-placeholder"></div>
 
-<script src="main.js"></script>
+<script src="<?php echo netz_asset('main.js'); ?>"></script>
 </body>
 </html>

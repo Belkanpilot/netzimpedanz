@@ -1,6 +1,7 @@
 <?php
 // dashboard.php - SECURE & STYLED VERSION
 session_start();
+require_once __DIR__ . '/inc/assets.php';
 
 // --- KONFIGURATION ---
 $csvFile = 'teilnehmer_liste_intern_2026.csv';
@@ -104,7 +105,7 @@ if (file_exists($csvFile)) {
 <head>
     <meta charset="UTF-8">
     <title>Dashboard | Anmeldungen 2026</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<?php echo netz_asset('style.css'); ?>">
     <style>
         /* Dashboard spezifische Styles (Damit es sofort schick aussieht) */
         body { background-color: #f5f5f7; color: #1d1d1f; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
