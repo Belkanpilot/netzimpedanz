@@ -305,13 +305,15 @@
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
     -webkit-align-items: center;
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
-    gap: 28px 40px;
+    gap: 32px 40px;
 }
 .programm-sponsor-card {
     margin: 0;
@@ -324,22 +326,15 @@
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    -webkit-flex: 0 1 auto;
+    flex: 0 1 auto;
 }
 .programm-sponsor-card img {
     display: block;
-    max-height: 56px;
+    max-height: 52px;
     width: auto;
-    max-width: 240px;
+    max-width: min(220px, 28vw);
     object-fit: contain;
-}
-/* EGSTON: Logo mit dunklem Grund wie im Corporate Design */
-.programm-sponsor-card--dark {
-    background: #141414;
-    border-radius: 10px;
-    padding: 14px 22px;
-}
-.programm-sponsor-card--dark img {
-    max-height: 48px;
 }
 .programm-sponsor-card a {
     display: -webkit-box;
@@ -404,6 +399,11 @@
         margin-bottom: 36px;
     }
     .programm-sponsors-logos {
-        gap: 20px 24px;
+        gap: 16px 12px;
+        padding: 0 4px;
+    }
+    .programm-sponsor-card img {
+        max-height: 40px;
+        max-width: min(160px, 30vw);
     }
 }
