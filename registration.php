@@ -22,7 +22,7 @@ if (empty($_SESSION['csrf_token'])) {
 <section class="section">
     <div class="container">
 
-        <div class="registration-intro" style="margin-bottom: 20px;">
+        <div class="registration-intro" style="margin-bottom: 32px;">
             <h1 style="color: var(--accent-color)"><strong>Registrierung 23. April 2026 - 8. Konferenz</strong></h1>
             <h2 class="reg-title">Netzausnutzung neu denken:<br>Speicher & Überbauung.</h2>
             <div class="reg-info-box">
@@ -43,6 +43,27 @@ if (empty($_SESSION['csrf_token'])) {
                     <div class="reg-datum">23. April 2026</div>
                     <div class="reg-uhrzeit">09:00 – 17:00 Uhr</div>
                 </div>
+            </div>
+        </div>
+
+        <div class="programm-sponsors" role="region" aria-label="Sponsoren der Konferenz">
+            <p class="programm-sponsors-label">Sponsoren der 8. Konferenz</p>
+            <div class="programm-sponsors-logos">
+                <figure class="programm-sponsor-card">
+                    <a href="https://www.egstonpower.com/" target="_blank" rel="noopener noreferrer" title="EGSTON Power Electronics – Website">
+                        <img src="bilder/sponsor-egston-power.png" width="220" height="61" alt="EGSTON POWER" loading="lazy">
+                    </a>
+                </figure>
+                <figure class="programm-sponsor-card">
+                    <a href="https://www.50hertz.com/" target="_blank" rel="noopener noreferrer" title="50Hertz Transmission – Website">
+                        <img src="bilder/sponsor-50hertz.png" width="220" height="60" alt="50hertz, Teil der Elia Group" loading="lazy">
+                    </a>
+                </figure>
+                <figure class="programm-sponsor-card">
+                    <a href="https://morenergy.net/" target="_blank" rel="noopener noreferrer" title="morEnergy GmbH – Website">
+                        <img src="bilder/sponsor-morenergy.svg" width="200" height="65" alt="morEnergy GmbH" loading="lazy">
+                    </a>
+                </figure>
             </div>
         </div>
 
