@@ -301,48 +301,37 @@
     font-weight: 700;
     margin: 0 0 20px;
 }
+/* Kein display:-webkit-box zuerst – in Safari sonst vertikales Stapeln (altes Flexbox-Modell). */
 .programm-sponsors-logos {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-align-items: center;
     align-items: center;
-    -webkit-justify-content: center;
     justify-content: center;
-    gap: 32px 40px;
+    gap: 28px 36px;
+    width: 100%;
 }
 .programm-sponsor-card {
     margin: 0;
     padding: 0;
     border: none;
-    display: -webkit-box;
-    display: -webkit-flex;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
     display: flex;
-    -webkit-align-items: center;
     align-items: center;
-    -webkit-justify-content: center;
     justify-content: center;
-    -webkit-flex: 0 1 auto;
-    flex: 0 1 auto;
 }
 .programm-sponsor-card img {
     display: block;
     max-height: 52px;
     width: auto;
-    max-width: min(220px, 28vw);
+    max-width: min(220px, 26vw);
     object-fit: contain;
 }
 .programm-sponsor-card a {
-    display: -webkit-box;
-    display: -webkit-flex;
     display: flex;
-    -webkit-align-items: center;
     align-items: center;
-    -webkit-justify-content: center;
     justify-content: center;
     text-decoration: none;
     color: inherit;
